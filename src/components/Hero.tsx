@@ -38,6 +38,30 @@ const Hero = () => {
     setDragging(false);
   };
 
+  // Touch events pro mobilní zařízení
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setDragging(true);
+    const touch = e.touches[0];
+    lastPosition.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!dragging) return;
+    e.preventDefault(); // Zamezí scrollování stránky
+    const touch = e.touches[0];
+    const dx = touch.clientY - lastPosition.current.y;
+    const dy = touch.clientX - lastPosition.current.x;
+    setRotation((prev) => ({
+      x: Math.max(Math.min(prev.x + dx * 0.5, 10), -10), // Omezení vertikální rotace
+      y: prev.y + dy * 0.5, // Neomezená horizontální rotace (360°)
+    }));
+    lastPosition.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = () => {
+    setDragging(false);
+  };
+
   return (
     <section
       id="home"
@@ -45,7 +69,7 @@ const Hero = () => {
     >
       <div className="container-custom text-center">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 mt-24 sm:mt-20 md:mt-16">
             {/* Hero Text */}
             <TextType
               text={["Ahoj , jsem Martin", "Vytvářím mobilní aplikace"]}
@@ -63,11 +87,14 @@ const Hero = () => {
           <div className="flex justify-center mb-8">
             <div
               ref={phoneRef}
-              className="relative w-56 h-80 cursor-grab active:cursor-grabbing select-none"
+              className="relative w-56 h-80 cursor-grab active:cursor-grabbing select-none touch-none"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
               style={{ perspective: "1200px" }}
             >
               <div
