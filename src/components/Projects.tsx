@@ -2,14 +2,16 @@ import { Github } from "lucide-react";
 import todoImage from "../assets/todo.png";
 import learnCzechImage from "../assets/learn-czech.png";
 import marbleGame from "../assets/marble-game.png";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Projects = () => {
+  const { t } = useLanguage();
+
   const projects = [
     {
       id: 1,
-      title: "Mobilní aplikace To Do List",
-      description:
-        "Aplikace umožňuje uživatelům vytvářet, upravovat a mazat úkoly s možností notifikací.",
+      title: t("projects.project1.title"),
+      description: t("projects.project1.description"),
       image: todoImage,
       tech: ["C#", "SQLite", "Xamarin"],
       github: "https://github.com/Pilnas2/ToDoList",
@@ -18,9 +20,8 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Mobilní aplikace pro podporu výuky českého jazyka pro cizince",
-      description:
-        "Bakalářská práce. Slovní zásoba, gramatika, poslech, testy, chatbot.",
+      title: t("projects.project2.title"),
+      description: t("projects.project2.description"),
       image: learnCzechImage,
       tech: ["Flutter", "Dart", "Firebase", "OpneAI API"],
       github: "https://github.com/Pilnas2/Bakalarska_prace",
@@ -29,9 +30,8 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "Počítačová hra Marble",
-      description:
-        "Jednoduchá hra s kuličkami, kde hráč ovládá kuličku a snaží se dostat do cíle, 3 úrovně.",
+      title: t("projects.project3.title"),
+      description: t("projects.project3.description"),
       image: marbleGame,
       tech: ["C#", "Unity"],
       github: "https://github.com/Pilnas2/UPCE-.NET-semestralniPrace",
@@ -47,17 +47,17 @@ const Projects = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="gradient-text">Projekty</span>
+            <span className="gradient-text">{t("projects.title")}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Přehled projektů, na kterých jsem pracoval
+            {t("projects.subtitle")}
           </p>
         </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-white mb-8 text-center">
-            Vybrané projekty
+            {t("projects.featured")}
           </h3>
           <div className="grid lg:grid-cols-3 gap-8">
             {featuredProjects.map((project) => (
@@ -95,7 +95,7 @@ const Projects = () => {
                       className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors duration-300"
                     >
                       <Github size={20} />
-                      Kód
+                      {t("projects.code")}
                     </a>
                   </div>
                 </div>

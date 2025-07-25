@@ -7,43 +7,46 @@ import {
   Languages,
   Calendar,
 } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+
   const personalInfo = [
     {
       icon: <MapPin className="w-6 h-6 text-primary-400" />,
-      label: "Adresa",
-      value: "Chlumec nad Cidlinou, Česká republika",
+      label: t("about.location"),
+      value: t("about.locationValue"),
     },
     {
       icon: <GraduationCap className="w-6 h-6 text-primary-400" />,
-      label: "Vzdělání",
-      value: "Univerzita Pardubice - FEI - Mobilní a webové aplikace, Bc.",
+      label: t("about.education"),
+      value: t("about.educationValue"),
     },
     {
       icon: <Languages className="w-6 h-6 text-primary-400" />,
-      label: "Jazyky",
-      value: "Angličtina, Němčina, Čeština",
+      label: t("about.languages"),
+      value: t("about.languagesValue"),
     },
     {
       icon: <Calendar className="w-6 h-6 text-primary-400" />,
-      label: "Rok narození",
-      value: "2000",
+      label: t("about.experience"),
+      value: t("about.experienceValue"),
     },
   ];
 
   const values = [
     {
       icon: <Database className="w-8 h-8 text-primary-400" />,
-      title: "SQL a NoSQL databáze",
+      title: t("about.value1"),
     },
     {
       icon: <AppWindow className="w-8 h-8 text-primary-400" />,
-      title: "Webové technologie",
+      title: t("about.value2"),
     },
     {
       icon: <Bot className="w-8 h-8 text-primary-400" />,
-      title: "AI a Automatizace",
+      title: t("about.value3"),
     },
   ];
 
@@ -52,11 +55,10 @@ const About = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="gradient-text">O mně</span>
+            <span className="gradient-text">{t("about.title")}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Jsem vývojář se zaměřením na IT a mobilní aplikace. Věnuji se tvorbě
-            aplikací jak pro operační systém IOS, tak pro Android.
+            {t("about.subtitle")}
           </p>
         </div>
 
@@ -65,19 +67,12 @@ const About = () => {
           <div className="animate-slide-up">
             {/* Personal Info Cards */}
 
-            <h3 className="text-2xl font-bold text-white mb-6">Můj příběh</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">
+              {t("about.story")}
+            </h3>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Začal jsem svou cestu ve světě programování na Fakultě
-              elektrotechniky a informatiky Univerzity Pardubice, kde jsem se
-              zaměřoval na mobilní a webové aplikace. Bakalářskou práci s názvem
-              Mobilní aplikace pro podporu výuky českého jazyka pro cizince jsem
-              vyvíjel ve frameworku Flutter, který mi umožňuje vytvářet
-              multiplatformní řešení s moderním a intuitivním designem. Pracuji
-              s technologiemi jako Firebase (Realtime Database, Authentication),
-              REST API, lokální databáze a integrace třetích stran. Mám také
-              zkušenosti s prací s databázemi, a to jak relačními SQL, tak
-              nerelačními NoSQL systémy
+              {t("about.description")}
             </p>
           </div>
 

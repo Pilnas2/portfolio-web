@@ -8,8 +8,11 @@ import {
   AlertCircle,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,20 +83,20 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6 text-primary-400" />,
-      title: "Email",
+      title: t("contact.email"),
       value: "martin.pilnas@email.cz",
       link: "mailto:martin.pilnas@email.cz",
     },
     {
       icon: <Phone className="w-6 h-6 text-primary-400" />,
-      title: "Telefon",
+      title: t("contact.phone"),
       value: "+420 774 970 347",
       link: "tel:+420774970347",
     },
     {
       icon: <MapPin className="w-6 h-6 text-primary-400" />,
-      title: "Lokace",
-      value: "Hradec Králové, Česká republika",
+      title: t("contact.location"),
+      value: t("contact.locationValue"),
       link: "#",
     },
   ];
@@ -103,11 +106,10 @@ const Contact = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="gradient-text">Pojďme Spolupracovat</span>
+            <span className="gradient-text">{t("contact.title")}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Máte projekt na mysli? Dejte mi vědět a společně vytvoříme něco
-            úžasného!
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -116,7 +118,7 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">
-                Kontaktní informace
+                {t("contact.info")}
               </h3>
             </div>
 
@@ -154,10 +156,10 @@ const Contact = () => {
               <div className="text-center">
                 <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Zpráva odeslána!
+                  {t("contact.form.success")}
                 </h3>
                 <p className="text-gray-300">
-                  Děkuji za vaši zprávu. Odpovím vám co nejdříve.
+                  {t("contact.form.successMessage")}
                 </p>
               </div>
             ) : (
@@ -168,7 +170,7 @@ const Contact = () => {
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-300 mb-2"
                     >
-                      Jméno *
+                      {t("contact.form.name")} {t("contact.form.required")}
                     </label>
                     <input
                       type="text"
@@ -178,7 +180,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-600 bg-slate-800 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="Vaše jméno"
+                      placeholder={t("contact.form.namePlaceholder")}
                     />
                   </div>
                   <div>
@@ -186,7 +188,7 @@ const Contact = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-300 mb-2"
                     >
-                      Email *
+                      {t("contact.form.email")} {t("contact.form.required")}
                     </label>
                     <input
                       type="email"
@@ -196,7 +198,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-600 bg-slate-800 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="vas.email@example.com"
+                      placeholder={t("contact.form.emailPlaceholder")}
                     />
                   </div>
                 </div>
@@ -206,7 +208,7 @@ const Contact = () => {
                     htmlFor="subject"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Předmět *
+                    {t("contact.form.subject")} {t("contact.form.required")}
                   </label>
                   <input
                     type="text"
@@ -216,7 +218,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-slate-600 bg-slate-800 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                    placeholder="O čem chcete mluvit?"
+                    placeholder={t("contact.form.subjectPlaceholder")}
                   />
                 </div>
 
@@ -225,7 +227,7 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Zpráva *
+                    {t("contact.form.message")} {t("contact.form.required")}
                   </label>
                   <textarea
                     id="message"
@@ -235,7 +237,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-slate-600 bg-slate-800 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300 resize-none"
-                    placeholder="Napište mi o vašem projektu..."
+                    placeholder={t("contact.form.messagePlaceholder")}
                   />
                 </div>
 
@@ -247,12 +249,12 @@ const Contact = () => {
                   {isLoading ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Odesílám...
+                      {t("contact.form.sending")}
                     </>
                   ) : (
                     <>
                       <Send size={20} />
-                      Odeslat zprávu
+                      {t("contact.form.send")}
                     </>
                   )}
                 </button>

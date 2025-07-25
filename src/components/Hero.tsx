@@ -1,5 +1,6 @@
 import { Mouse } from "lucide-react";
 import TextType from "./TextType";
+import { useLanguage } from "../contexts/LanguageContext";
 
 import { useRef, useState } from "react";
 
@@ -13,6 +14,7 @@ const Hero = () => {
   const [rotation, setRotation] = useState<Rotation>({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const lastPosition = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const { t } = useLanguage();
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setDragging(true);
@@ -72,7 +74,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 mt-24 sm:mt-20 md:mt-16">
             {/* Hero Text */}
             <TextType
-              text={["Ahoj , jsem Martin", "Vytvářím mobilní aplikace"]}
+              text={[t("hero.title1"), t("hero.title2")]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
@@ -181,7 +183,7 @@ const Hero = () => {
                 size={32}
                 className="hover:text-primary-400 transition-colors duration-300"
               />
-              <p className="text-sm">Táhněte pro otočení telefonu</p>
+              <p className="text-sm">{t("hero.dragHint")}</p>
             </div>
           </div>
         </div>

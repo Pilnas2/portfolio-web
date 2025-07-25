@@ -1,10 +1,14 @@
+import { useLanguage } from "../contexts/LanguageContext";
+
 const Skills = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="section-padding bg-slate-800">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="gradient-text">Dovednosti</span>
+            <span className="gradient-text">{t("skills.title")}</span>
           </h2>
         </div>
 

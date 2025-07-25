@@ -1,41 +1,44 @@
-import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
-    { name: 'Domů', href: '#home' },
-    { name: 'O mně', href: '#about' },
-    { name: 'Dovednosti', href: '#skills' },
-    { name: 'Projekty', href: '#projects' },
-    { name: 'Kontakt', href: '#contact' },
-  ]
+    { name: t("nav.home"), href: "#home" },
+    { name: t("nav.about"), href: "#about" },
+    { name: t("nav.skills"), href: "#skills" },
+    { name: t("nav.projects"), href: "#projects" },
+    { name: t("nav.contact"), href: "#contact" },
+  ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
-          : 'bg-transparent'
+        isScrolled
+          ? "bg-slate-900/95 backdrop-blur-sm shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               className="text-2xl font-bold gradient-text flex items-center gap-3"
             >
               <a
@@ -45,7 +48,7 @@ const Header = () => {
                 tabIndex={-1}
                 className="focus:outline-none"
                 aria-label="Zobrazit profilovou fotku ve velkém rozlišení"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               >
                 <img
                   src="./profilePhoto.jpg"
@@ -70,6 +73,7 @@ const Header = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
+              <LanguageSwitcher />
             </div>
           </nav>
 
@@ -98,12 +102,15 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
