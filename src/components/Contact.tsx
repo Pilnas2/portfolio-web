@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +17,8 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,17 +29,52 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError("");
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+    try {
+      // EmailJS configuration - můžete nahradit vlastními hodnotami
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Připravíme data pro EmailJS template
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: `${formData.email}: ${formData.subject}`,
+        message: formData.message,
+        reply_to: formData.email,
+        user_name: formData.name,
+        user_email: formData.email,
+        user_subject: formData.subject,
+        user_message: formData.message,
+        to_name: "Martin",
+        to_email: "martin.pilnas@email.cz",
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setIsSubmitted(true);
+      console.log("Email successfully sent!");
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Neznámá chyba";
+      setError(
+        `Nepodařilo se odeslat zprávu: ${errorMessage}. Zkuste to prosím znovu nebo mě kontaktujte přímo na email.`
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -98,6 +143,13 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-slate-900 rounded-xl shadow-lg p-8">
+            {error && (
+              <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg flex items-center gap-3">
+                <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                <p className="text-red-300 text-sm">{error}</p>
+              </div>
+            )}
+
             {isSubmitted ? (
               <div className="text-center">
                 <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -189,10 +241,20 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2"
+                  disabled={isLoading}
+                  className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send size={20} />
-                  Odeslat zprávu
+                  {isLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Odesílám...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      Odeslat zprávu
+                    </>
+                  )}
                 </button>
               </form>
             )}

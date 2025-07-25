@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://vasujetouzivatelskeajmeno.github.io/portfolio-web",
+  "homepage": "https://Pilnas2.github.io/portfolio-web",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

@@ -80,10 +80,6 @@ const Hero = () => {
             />
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Vytvářím moderní mobilní aplikace jak pro IOS, tak pro Android
-          </p>
-
           <div className="flex justify-center mb-8">
             <div
               ref={phoneRef}
