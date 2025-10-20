@@ -24,17 +24,17 @@ const translations = {
     "nav.contact": "Kontakt",
 
     // Hero Section
-    "hero.title1": "Vytvářím mobilní aplikace",
-    "hero.title2": "pro iOS a Android",
+    "hero.title1": "Vývoj, který dává smysl",
+    "hero.title2": "pro lidi i stroje",
     "hero.dragHint": "Táhněte pro otočení telefonu",
 
     // About Section
     "about.title": "O mně",
     "about.subtitle":
-      "Jsem vývojář se zaměřením na IT a mobilní aplikace. Věnuji se tvorbě aplikací jak pro operační systém IOS, tak pro Android.",
+      "Věnuji se vývoji softwaru a rád se učím nové věci. Baví mě proměňovat nápady v funkční digitální řešení.",
     "about.story": "Můj příběh",
     "about.description":
-      "Začal jsem svou cestu ve světě programování na Fakultě elektrotechniky a informatiky Univerzity Pardubice, kde jsem se zaměřoval na mobilní a webové aplikace. Bakalářskou práci s názvem Mobilní aplikace pro podporu výuky českého jazyka pro cizince jsem vyvíjel ve frameworku Flutter, který mi umožňuje vytvářet multiplatformní řešení s moderním a intuitivním designem. Pracuji s technologiemi jako Firebase (Realtime Database, Authentication), REST API, lokální databáze a integrace třetích stran. Mám také zkušenosti s prací s databázemi, a to jak relačními SQL, tak nerelačními NoSQL systémy",
+      "Začal jsem svou cestu ve světě programování na Fakultě elektrotechniky a informatiky Univerzity Pardubice, kde jsem studoval obor se zaměřením na mobilní a webové aplikace. Během studia jsem získal zkušenosti s databázemi, a to jak relačními SQL, tak nerelačními NoSQL systémy. V rámci předmětů jsem pracoval s objektově orientovaným programováním v jazycích C# a Java, a osvojil si základy jazyka C. Ve webovém vývoji jsem pracoval s HTML, CSS a JavaScriptem, kde jsem se zaměřoval na tvorbu responzivních a uživatelsky přívětivých rozhraní. V oblasti mobilního vývoje jsem se věnoval Kotlinu. Bakalářskou práci s názvem Mobilní aplikace pro podporu výuky českého jazyka pro cizince jsem vyvíjel ve frameworku Flutter, který umožňuje vytvářet multiplatformní řešení s moderním a intuitivním designem.",
     "about.location": "Adresa",
     "about.locationValue": "Chlumec nad Cidlinou, Česká republika",
     "about.education": "Vzdělání",
@@ -45,8 +45,8 @@ const translations = {
     "about.experience": "Zkušenosti",
     "about.experienceValue": "3+ let",
     "about.value1": "SQL a NoSQL databáze",
-    "about.value2": "Webové technologie",
-    "about.value3": "AI a Automatizace",
+    "about.value2": "Mobilní a webové technologie",
+    "about.value3": "C# a objektové programování",
 
     // Skills Section
     "skills.title": "Dovednosti",
@@ -66,6 +66,9 @@ const translations = {
     "projects.project3.title": "Počítačová hra Marble",
     "projects.project3.description":
       "Jednoduchá hra s kuličkami, kde hráč ovládá kuličku a snaží se dostat do cíle, 3 úrovně.",
+    "projects.project4.title": "Konfigurace databáze MongoDB v Dockeru",
+    "projects.project4.description":
+      "Konfigurace a správa databáze MongoDB v kontejneru Docker.",
 
     // Contact Section
     "contact.title": "Pojďme Spolupracovat",
@@ -92,12 +95,10 @@ const translations = {
     "contact.form.required": "*",
 
     // Footer
-    "footer.description":
-      "Mobilní a webový vývojář specializující se na vytváření moderních a uživatelsky přívětivých aplikací.",
+    "footer.description": "Kreativní mysl v digitálním světě.",
     "footer.quickLinks": "Rychlé odkazy",
     "footer.contact": "Kontakt",
-    "footer.copyright": "Portfolio. Vytvořeno s",
-    "footer.location": "v České republice",
+    "footer.copyright": "Portfolio.",
   },
   en: {
     // Navigation
@@ -108,17 +109,17 @@ const translations = {
     "nav.contact": "Contact",
 
     // Hero Section
-    "hero.title1": "I create mobile applications",
-    "hero.title2": "for iOS and Android",
+    "hero.title1": "Development that makes sense",
+    "hero.title2": "for people and machines",
     "hero.dragHint": "Drag to rotate phone",
 
     // About Section
     "about.title": "About Me",
     "about.subtitle":
-      "I am a developer focused on IT and mobile applications. I develop applications for both iOS and Android operating systems.",
+      "I work on software development and I enjoy learning new things. I like turning ideas into functional digital solutions.",
     "about.story": "My Story",
     "about.description":
-      'I started my journey in the world of programming at the Faculty of Electrical Engineering and Informatics at the University of Pardubice, where I focused on mobile and web applications. I developed my bachelor\'s thesis titled "Mobile Application for Supporting Czech Language Learning for Foreigners" using the Flutter framework, which allows me to create cross-platform solutions with modern and intuitive design. I work with technologies like Firebase (Realtime Database, Authentication), REST API, local databases, and third-party integrations. I also have experience working with databases, both relational SQL and non-relational NoSQL systems.',
+      "I began my journey in programming at the Faculty of Electrical Engineering and Informatics at the University of Pardubice, where I studied Mobile and Web Applications. During my studies I gained experience with databases, both relational SQL and non-relational NoSQL systems. In coursework I worked with object-oriented programming in C# and Java, and learned the basics of C. In web development I worked with HTML, CSS and JavaScript, focusing on creating responsive and user-friendly interfaces. In mobile development I worked with Kotlin. I developed my bachelor’s thesis titled 'Mobile Application for Supporting Czech Language Learning for Foreigners' using the Flutter framework, which enables creating cross-platform solutions with modern and intuitive design.",
     "about.location": "Location",
     "about.locationValue": "Chlumec nad Cidlinou, Czech Republic",
     "about.education": "Education",
@@ -129,8 +130,8 @@ const translations = {
     "about.experience": "Experience",
     "about.experienceValue": "3+ years",
     "about.value1": "SQL and NoSQL databases",
-    "about.value2": "Web technologies",
-    "about.value3": "AI and Automation",
+    "about.value2": "Mobile and web technologies",
+    "about.value3": "C# and object-oriented programming",
 
     // Skills Section
     "skills.title": "Skills",
@@ -150,6 +151,9 @@ const translations = {
     "projects.project3.title": "Marble Computer Game",
     "projects.project3.description":
       "Simple marble game where the player controls a marble and tries to reach the goal, 3 levels.",
+    "projects.project4.title": "MongoDB Database Configuration in Docker",
+    "projects.project4.description":
+      "Configuration and management of a MongoDB database inside a Docker container.",
 
     // Contact Section
     "contact.title": "Let's Work Together",
@@ -176,12 +180,10 @@ const translations = {
     "contact.form.required": "*",
 
     // Footer
-    "footer.description":
-      "Mobile and web developer specializing in creating modern and user-friendly applications.",
+    "footer.description": "A creative mind in the digital world.",
     "footer.quickLinks": "Quick Links",
     "footer.contact": "Contact",
-    "footer.copyright": "Portfolio. Created with",
-    "footer.location": "in Czech Republic",
+    "footer.copyright": "Portfolio.",
   },
 };
 

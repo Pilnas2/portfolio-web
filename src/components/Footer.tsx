@@ -9,7 +9,6 @@ const Footer = () => {
     { name: t("nav.home"), href: "#home" },
     { name: t("nav.about"), href: "#about" },
     { name: t("nav.projects"), href: "#projects" },
-    { name: t("nav.contact"), href: "#contact" },
   ];
 
   const socialLinks = [
@@ -78,8 +77,6 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm flex items-center gap-1">
               © {currentYear} {t("footer.copyright")}
-              <Heart size={14} className="text-red-500" />
-              {t("footer.location")}
             </p>
           </div>
         </div>

@@ -16,13 +16,14 @@ const Skills = () => {
         <div className="mt-16 text-center">
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
             {[
-              "Flutter",
-              "React",
+              "OOP",
+              "C#",
               "Xamarin",
               "SQLite",
-              "Figma",
+              "Flutter",
               "Github",
-              "Firebase",
+              "PL/SQL",
+              "MongoDB",
             ].map((tech, index) => (
               <div
                 key={index}

@@ -2,6 +2,7 @@ import { Github } from "lucide-react";
 import todoImage from "../assets/todo.png";
 import learnCzechImage from "../assets/learn-czech.png";
 import marbleGame from "../assets/marble-game.png";
+import mobgoSharedCluster from "../assets/mongoDBSharedCluster.png";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Projects = () => {
@@ -35,6 +36,16 @@ const Projects = () => {
       image: marbleGame,
       tech: ["C#", "Unity"],
       github: "https://github.com/Pilnas2/UPCE-.NET-semestralniPrace",
+      live: "#",
+      featured: true,
+    },
+    {
+      id: 4,
+      title: t("projects.project4.title"),
+      description: t("projects.project4.description"),
+      image: mobgoSharedCluster,
+      tech: ["MongoDB", "Docker"],
+      github: "https://github.com/Pilnas2/UPCE-MongoCluster",
       live: "#",
       featured: true,
     },
