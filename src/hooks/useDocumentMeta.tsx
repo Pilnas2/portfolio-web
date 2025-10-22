@@ -8,17 +8,15 @@ const useDocumentMeta = () => {
     // Update document title
     document.title =
       language === "cs"
-        ? "Martin Pilný - Mobilní vývojář"
-        : "Martin Pilný - Mobile Developer";
+        ? "Martin Pilný - Juniorní vývojář"
+        : "Martin Pilný - Junior Developer";
 
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        language === "cs"
-          ? "Mobilní a webový vývojář specializující se na vytváření moderních aplikací pro iOS a Android"
-          : "Mobile and web developer specializing in creating modern applications for iOS and Android"
+        language === "cs" ? "Juniorní vývojář" : "Junior Developer"
       );
     }
   }, [language, t]);
